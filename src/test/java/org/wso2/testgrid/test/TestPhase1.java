@@ -44,11 +44,8 @@ public class TestPhase1 {
         HttpsURLConnection connection = null;
 
         try {
-            String user = TestProperties.jenkinsUser; // username
-            //String pass = "ba4ac7dc47c0d2f68c063dc44425d964"; // password or API token
             String pass = TestProperties.jenkinsToken;
-            URL buildTriggerUrl = new URL("https://" + user + ":" + pass +
-                    "@testgrid-live-dev.private.wso2.com/admin/job/Phase-1/build?token=test");
+            URL buildTriggerUrl = new URL("https://testgrid-live-dev.private.wso2.com/admin/job/Phase-1/build?token=" + pass);
             URL buildStatusUrl =
                     new URL("https://testgrid-live-dev.private.wso2.com/admin/job/Phase-1/lastBuild/api/json");
 
