@@ -176,6 +176,8 @@ public class TestPhase1 {
 
     public void testTextContained(EmailUtils emailUtils, String buildNo)  {
         try{
+            System.out.println("checking for email :" + "'Phase-1' Test Results! #(" + buildNo + ")");
+
             Message email = emailUtils.getMessagesBySubject("'Phase-1' Test Results! #(" + buildNo + ")",
                     false, 5)[0];
             Assert.assertTrue(emailUtils.isTextInMessage(email, "Phase-1 integration test Results!"),
