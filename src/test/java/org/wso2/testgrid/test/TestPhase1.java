@@ -75,6 +75,7 @@ public class TestPhase1 {
             while (jenkinsJob.building) {
                 jenkinsJob=getLastJob(buildStatusUrl);
                 System.out.println("Phase 1  #("+jenkinsJob.id + ") building ");
+                TimeUnit.SECONDS.sleep(1);
             }
 
             currentBuild = getLastJob(buildStatusUrl);
@@ -187,7 +188,6 @@ public class TestPhase1 {
                 TimeUnit.SECONDS.sleep(1);
                 System.out.println("Waiting for email");
             }
-            System.out.println("checking for email :" + "'Phase-1' Test Results! #(" + buildNo + ")");
             Message email = emailUtils.getMessagesBySubject("'Phase-1' Test Results! #(" + buildNo + ")",
                     false, 100)[0];
             Assert.assertTrue(emailUtils.isTextInMessage(email, "Phase-1 integration test Results!"),
@@ -205,7 +205,6 @@ public class TestPhase1 {
             //gmail need to alow less secure apps
             EmailUtils emailUtils = new EmailUtils(TestProperties.email, TestProperties.emailPassword,
                     "smtp.gmail.com", EmailUtils.EmailFolder.INBOX);
-            System.out.println("email has :" + emailUtils.getNumberOfMessages());
             return emailUtils;
         } catch (MessagingException e) {
             e.printStackTrace();
