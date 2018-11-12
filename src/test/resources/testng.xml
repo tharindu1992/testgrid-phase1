@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Phase1Suite" parallel="false">
+  <test name="TestNgMavenTest">
+    <classes>
+      <class name="org.wso2.testgrid.test.Phase1"/>
+    </classes>
+  </test>
+</suite>
