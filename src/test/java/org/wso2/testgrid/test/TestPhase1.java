@@ -190,9 +190,12 @@ public class TestPhase1 {
 
     public static EmailUtils connectToEmail() {
         try {
+            System.out.println(TestProperties.emailPassword);
             //gmail need to alow less secure apps
             EmailUtils emailUtils = new EmailUtils(TestProperties.email, TestProperties.emailPassword,
                     "smtp.gmail.com", EmailUtils.EmailFolder.INBOX);
+	    System.out.println("email has :" + emailUtils.getNumberOfMessages());
+
             return emailUtils;
         } catch (MessagingException e) {
             e.printStackTrace();
