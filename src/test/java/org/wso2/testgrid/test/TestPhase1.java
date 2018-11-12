@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.mail.Message;
@@ -176,16 +177,17 @@ public class TestPhase1 {
 
     public void testTextContained(EmailUtils emailUtils, String buildNo)  {
         try{
-	    System.out.println("checking for email :" + "'Phase-1' Test Results! #(" + buildNo + ")");
             for (int i = 0; i < 30; i++){
                 Message[] emails = emailUtils.getMessagesBySubject("'Phase-1' Test Results! #(" + buildNo + ")",
                         false, 100);
                 if (emails.length != 0) {
+                    System.out.println("EMAIL Found");
                     break;
                 }
                 TimeUnit.SECONDS.sleep(1);
                 System.out.println("Waiting for email");
             }
+            System.out.println("checking for email :" + "'Phase-1' Test Results! #(" + buildNo + ")");
             Message email = emailUtils.getMessagesBySubject("'Phase-1' Test Results! #(" + buildNo + ")",
                     false, 100)[0];
             Assert.assertTrue(emailUtils.isTextInMessage(email, "Phase-1 integration test Results!"),
