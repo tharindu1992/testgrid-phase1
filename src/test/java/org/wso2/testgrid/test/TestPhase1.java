@@ -176,16 +176,16 @@ public class TestPhase1 {
 
     public void testTextContained(EmailUtils emailUtils, String buildNo)  {
         try{
-            for (int i = 0; i < 10; i++){
+	    System.out.println("checking for email :" + "'Phase-1' Test Results! #(" + buildNo + ")");
+            for (int i = 0; i < 30; i++){
                 Message[] emails = emailUtils.getMessagesBySubject("'Phase-1' Test Results! #(" + buildNo + ")",
                         false, 100);
                 if (emails.length != 0) {
                     break;
                 }
-                wait(1000);
+                TimeUnit.SECONDS.sleep(1);
                 System.out.println("Waiting for email");
             }
-            System.out.println("checking for email :" + "'Phase-1' Test Results! #(" + buildNo + ")");
             Message email = emailUtils.getMessagesBySubject("'Phase-1' Test Results! #(" + buildNo + ")",
                     false, 100)[0];
             Assert.assertTrue(emailUtils.isTextInMessage(email, "Phase-1 integration test Results!"),
