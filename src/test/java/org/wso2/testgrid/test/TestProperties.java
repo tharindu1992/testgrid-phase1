@@ -13,6 +13,8 @@ public class TestProperties {
     public static String emailPassword;
     public static String jenkinsUser;
     public static String jenkinsToken;
+    public static String buildTriggerUrl;
+    public static String buildStatusUrl;
     private String propFileName = System.getenv("TEST_PROPS");
 
     public TestProperties() {
@@ -35,6 +37,8 @@ public class TestProperties {
             emailPassword = prop.getProperty("emailPassword");
             jenkinsToken = prop.getProperty("jenkinsToken");
             jenkinsUser = prop.getProperty("jenkinsUser");
+            buildTriggerUrl = prop.getProperty("buildTriggerUrl");
+            buildStatusUrl = prop.getProperty("buildStatusUrl");
 
         } catch (IOException e) {
             System.out.println("Exception: " + e);

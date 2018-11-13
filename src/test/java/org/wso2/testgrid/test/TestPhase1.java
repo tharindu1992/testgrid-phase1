@@ -46,9 +46,9 @@ public class TestPhase1 {
 
         try {
             String pass = TestProperties.jenkinsToken;
-            URL buildTriggerUrl = new URL("https://testgrid-live-dev.private.wso2.com/admin/job/Phase-1/build?token=" + pass);
+            URL buildTriggerUrl = new URL(TestProperties.buildTriggerUrl + "?token=" + pass);
             URL buildStatusUrl =
-                    new URL("https://testgrid-live-dev.private.wso2.com/admin/job/Phase-1/lastBuild/api/json");
+                    new URL(TestProperties.buildStatusUrl);
 
             JenkinsJob jenkinsJob = getLastJob(buildStatusUrl);
 
